@@ -7,7 +7,7 @@ MAINTAINER Gianluca Arbezzano <gianarb92@gmail.com>
 
 RUN apt-get update
 RUN apt-get install -y build-essential openssl curl wget cmake \
-    pkg-config libtool automake unzip
+    pkg-config libtool automake unzip git
 
 WORKDIR /tmp
 RUN wget https://github.com/neovim/neovim/archive/nightly.tar.gz
@@ -18,8 +18,13 @@ WORKDIR neovim-nightly
 RUN make
 RUN make install
 
-WORKDIR /
+WORKDIR /root
 
-VOLUME ["~/.nvimrc", "~/.nvim"]
+RUN wget -O ./dotfiles.zip https://github.com/gianarb/dotfiles/archive/master.zip
+RUN unzip ./dotfiles.zip
+WORKDIR dotfiles-master
+RUN make vim
+
+WORKDIR /project
 
 CMD ["nvim", "-v"]
