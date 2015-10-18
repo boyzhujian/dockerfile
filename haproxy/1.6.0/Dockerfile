@@ -8,6 +8,6 @@ RUN tar -xzvf haproxy-1.6.0.tar.gz
 WORKDIR ./haproxy-1.6.0
 
 RUN make TARGET=linux26 USE_PCRE=1 CPU=generic USE_OPENSSL=1 USE_LIBCRYPT=1
-RUN make install
+RUN make install-bin
 
 CMD ["haproxy", "-v"]
