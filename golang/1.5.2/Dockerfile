@@ -6,7 +6,7 @@ FROM ubuntu:latest
 MAINTAINER Gianluca Arbezzano <gianarb92@gmail.com>
 
 RUN apt-get update
-RUN apt-get install -y build-essential curl wget cmake
+RUN apt-get install -y build-essential curl wget cmake git
 
 WORKDIR /tmp
 RUN wget https://storage.googleapis.com/golang/go1.5.2.linux-amd64.tar.gz
