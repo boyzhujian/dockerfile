@@ -1,6 +1,8 @@
 FROM ubuntu
 MAINTAINER Gianluca Arbezzano <gianarb92@gmail.com>
 
+ENV INFLUX_CONF=/etc/influxdb_conf.toml
+
 RUN apt-get update
 RUN apt-get install -y wget
 
@@ -11,4 +13,8 @@ RUN rm influxdb_0.10.0-1_amd64.deb
 EXPOSE 8083
 EXPOSE 8086
 
-ENTRYPOINT ["influxd", "-config", "/etc/influxdb_conf.toml"]
+ADD ./run.sh ./run.sh
+RUN chmod 755 ./run.sh
+ADD ./influxdb_conf.toml $INFLUX_CONF
+
+ENTRYPOINT ["./run.sh"]
