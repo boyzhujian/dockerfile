@@ -1,5 +1,7 @@
 Telegraf is collector for InfluxDB and other time series database.
 
+[hub.docker.com/gianarb/telegraf](https://hub.docker.com/r/gianarb/telegraf/)
+
 ```bash
 docker pull gianarb/telegraf:0.10.4.1
 docker run -it gianarb/telegraf:0.10.4.1
