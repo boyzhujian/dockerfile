@@ -1,24 +1,23 @@
 # InfluxDB
 [InfluxDB](http://influxdb.com) is an open-source, distributed, time series database with no external dependencies.
 
+[hub.docker.com/gianarb/influxdb](https://hub.docker.com/r/gianarb/influxdb/)
+
 ## Run
 
-### Run with external configuration file
-
-This run command shares a volume containing the toml configuration for use with the -config option.
-
 ```bash
-docker run -it -v influxdb_conf.toml:/influxdb_conf.toml gianarb/influxdb -config=/influxdb_conf.toml
+docker run -it -p 8083:8083 -p 8086:8086 gianarb/influxdb
 ```
 
-### Get Version
+## Custom
 
+The default configuration path is `/etc/influxdb_conf.toml` you can decide to use VOLUME to override it
 ```bash
-docker run --rm gianarb/influxdb -v
+docker run -it -p 8083:8083 -p 8086:8086 -v your/influxdb_conf.toml:/etc/influxdb_conf.toml gianarb/influxdb
 ```
 
-## Build
+Or you can change this patch with `$INFLUXDB_CONF`
 
 ```bash
-make build
+docker run -it -e INFLUXDB_CONF=/influxdb.toml -v influxdb_conf.toml:/influxdb.toml gianarb/influxdb -config=/influxdb_conf.toml
 ```
