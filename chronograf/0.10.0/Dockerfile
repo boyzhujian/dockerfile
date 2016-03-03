@@ -9,4 +9,4 @@ ADD ./chronograf.toml /chronograf.toml
 
 EXPOSE 10000
 
-CMD ["chronograf", "-config=/chronograf.toml"]
+CMD ["/opt/chronograf/chronograf", "-config=/chronograf.toml"]
