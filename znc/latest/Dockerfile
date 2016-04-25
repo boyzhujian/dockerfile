@@ -9,8 +9,10 @@ RUN apk add --update g++ make git automake m4 cmake \
     && cmake . \
     && make \
     && make install
-ADD ./znc.conf /sbin/.znc/configs/znc.conf
-RUN chmod 777  /sbin/.znc/configs/znc.conf
-USER daemon
+ENV HOME /home/user
+RUN useradd --create-home --home-dir $HOME user \
+    && chown -R user:user $HOME
+ADD ./znc.conf $HOME/.znc/configs/znc.conf
+USER user
 EXPOSE 6060
 CMD ["znc", "--foreground"]
