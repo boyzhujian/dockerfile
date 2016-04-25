@@ -10,7 +10,7 @@ RUN apk add --update g++ make git automake m4 cmake \
     && make \
     && make install
 ENV HOME /home/user
-RUN useradd --create-home --home-dir $HOME user \
+RUN adduser -D -h $HOME user \
     && chown -R user:user $HOME
 ADD ./znc.conf $HOME/.znc/configs/znc.conf
 USER user
