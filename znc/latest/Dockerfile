@@ -1,6 +1,8 @@
 FROM alpine:latest
 
+ENV HOME /home/user
 WORKDIR /tmp
+ADD ./znc.conf $HOME/.znc/configs/znc.conf
 RUN apk add --update g++ make git automake m4 cmake \
     && rm -rf /var/cache/apk/* \
     && git clone https://github.com/znc/znc.git \
@@ -8,11 +10,10 @@ RUN apk add --update g++ make git automake m4 cmake \
     && git submodule update --init --recursive \
     && cmake . \
     && make \
-    && make install
-ENV HOME /home/user
-RUN adduser -D -h $HOME user \
+    && make install \
+    && rm -rf /tmp/* \
+    && adduser -D -h $HOME user user \
     && chown -R user:user $HOME
-ADD ./znc.conf $HOME/.znc/configs/znc.conf
 USER user
 EXPOSE 6060
 CMD ["znc", "--foreground"]
