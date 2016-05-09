@@ -8,7 +8,7 @@ RUN apt-get install -y wget
 
 RUN wget https://s3.amazonaws.com/influxdb/influxdb_0.10.0-1_amd64.deb
 RUN wget https://s3.amazonaws.com/influxdb/influxdb_nightly_amd64.deb
-RUN sudo dpkg -i influxdb_nightly_amd64.deb
+RUN dpkg -i influxdb_nightly_amd64.deb
 RUN rm influxdb_nightly_amd64.deb
 
 EXPOSE 8083
