@@ -5,7 +5,7 @@
 #   --name jenkins
 #
 
-FROM alpine:latest
+FROM docker
 MAINTAINER Gianluca Arbezzano <gianarb92@gmail.com>
 
 ENV JENKINS_HOME /var/jenkins
