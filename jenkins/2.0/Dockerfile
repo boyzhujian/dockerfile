@@ -16,6 +16,7 @@ WORKDIR /opt
 RUN apk add --update git openjdk8-jre ttf-dejavu \
     && rm -rf /var/cache/apk/* \
     && wget http://mirrors.jenkins-ci.org/war/${JENKINS_VERSION}/jenkins.war
+RUN echo 'jenkins ALL=(ALL) NOPASSWD: /usr/local/bin/docker' >> /etc/sudoers
 VOLUME  ${JENKINS_HOME}
 EXPOSE 8080
 EXPOSE 50000
