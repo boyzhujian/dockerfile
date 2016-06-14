@@ -6,9 +6,9 @@ ENV INFLUXDB_CONF=/etc/influxdb_conf.toml
 RUN apt-get update
 RUN apt-get install -y wget
 
-RUN wget https://s3.amazonaws.com/influxdb/influxdb_0.13.0-1_amd64.deb
-RUN dpkg -i influxdb_0.13.0-1_amd64.deb
-RUN rm influxdb_0.13.0-1_amd64.deb
+RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_amd64.deb
+RUN dpkg -i influxdb_0.13.0_amd64.deb
+RUN rm influxdb_0.13.0_amd64.deb
 
 EXPOSE 8083
 EXPOSE 8086
