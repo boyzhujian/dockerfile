@@ -11,9 +11,9 @@ FROM debian:sid
 MAINTAINER Gianluca Arbezzano <gianarb92@gmail.com>
 
 WORKDIR /tmp
-RUN apt-get update
-RUN apt-get install -y zlib1g-dev build-essential wget qt4-default libgcrypt20-dev cmake
-RUN wget  https://www.keepassx.org/releases/2.0.3/keepassx-2.0.3.tar.gz && \
+RUN apt-get update && \
+    apt-get install -y zlib1g-dev build-essential wget qt4-default libgcrypt20-dev cmake && \
+    wget  https://www.keepassx.org/releases/2.0.3/keepassx-2.0.3.tar.gz && \
     tar xzvf keepassx-2.0.3.tar.gz && \
     cd keepassx-2.0.3 && \
     cmake . && make &&  make install && \
