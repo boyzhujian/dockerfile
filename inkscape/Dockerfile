@@ -1,3 +1,9 @@
+# docker run -v /tmp/.X11-unix:/tmp/.X11-unix \
+#   -v /inkscape/:/workspace \
+#   -v $HOME/Pictures:/home/Pictures \
+#   -e DISPLAY=unix$DISPLAY \
+#   gianarb/inkscape
+
 FROM ubuntu:16.10
 
 RUN echo "deb http://ppa.launchpad.net/inkscape.dev/stable/ubuntu yakkety main" > /etc/apt/sources.list.d/inkscape && \
