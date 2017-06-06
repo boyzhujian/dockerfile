@@ -28,7 +28,7 @@ ENV BROWSER lynx
 
 USER mutty
 ENV HOME /home/mutty
-ENV TERM xterm-256color
+#ENV TERM xterm-256color
 ENV LANG C.UTF-8
 
 CMD ["mutt", "-F", "~/.mutt/muttrc"]
