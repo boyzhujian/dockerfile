@@ -2,11 +2,11 @@ FROM ubuntu:latest
 MAINTAINER Gianluca Arbezzano <gianarb92@gmail.com>
 
 RUN apt-get update
-RUN sudo apt-get install -y wget libssl-dev git nodejs zlib1g-dev make build-essential automake libtool bison libffi-dev zlib-bin
+RUN apt-get install -y wget libssl-dev git nodejs zlib1g-dev make build-essential automake libtool bison libffi-dev minizip 
 
-RUN wget https://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.3.tar.gz
-RUN tar -xvzf ruby-2.2.3.tar.gz
-WORKDIR ruby-2.2.3/
+RUN wget https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.1.tar.gz
+RUN tar -xvzf ruby-2.4.1.tar.gz
+WORKDIR ruby-2.4.1/
 RUN ls -lsa
 RUN ./configure --prefix=/usr/local
 RUN make
