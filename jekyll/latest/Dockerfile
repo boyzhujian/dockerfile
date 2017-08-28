@@ -13,7 +13,7 @@ RUN make
 RUN make install
 
 RUN gem install jekyll
-RUN gem install rdiscount
+RUN gem install rdiscount bundler
 
 WORKDIR /opt/site
 
